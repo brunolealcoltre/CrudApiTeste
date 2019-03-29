@@ -22,9 +22,9 @@ public interface ClienteRepository extends JpaRepository<DadosCliente, Long>{
 	@Query(value = "select * FROM dados_cliente  ORDER BY LOWER(dados_cliente.nome_cliente) ASC ",nativeQuery = true)
 	List<DadosCliente> ordenaCliente();
 	
-	
-	
-
+	@Query(value = "SELECT new com.crud.api.teste.modelo(u.nome_cliente) FROM dados_cliente u",nativeQuery = true)
+	List<DadosCliente> findByColuna(String coluna);
+		
 }
 	
 

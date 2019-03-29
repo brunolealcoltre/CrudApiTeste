@@ -65,12 +65,20 @@ public class DadosClienteResource {
 			 : ResponseEntity.notFound().build();		
 	}
 	
+	@GetMapping("/coluna")
+	public ResponseEntity<List<DadosCliente>> buscarColuna(@RequestParam("coluna")String coluna){
+		List<DadosCliente> colunaEncontrada = clienteRepository.findByColuna(coluna.toLowerCase());
+		return colunaEncontrada != null ? ResponseEntity.ok().body(colunaEncontrada)
+				:ResponseEntity.notFound().build();
+	}
+	
 	
 	@GetMapping("/clienteOrdenado")
 	public ResponseEntity <List<DadosCliente>> ordenar() {
 		List<DadosCliente> clientesFiltrados = clienteRepository.ordenaCliente();
 		return ResponseEntity.ok().body(clientesFiltrados);
 	}
+	
 	
 	
 	@ApiOperation(value="Salva cliente")
