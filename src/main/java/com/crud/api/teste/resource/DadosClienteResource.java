@@ -31,7 +31,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="API REST DadosClientes")
 @RestController
 @RequestMapping(value = "/dadosClientes")
-// testando o commit
 public class DadosClienteResource {
 
 	@Autowired
